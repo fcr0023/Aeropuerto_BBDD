@@ -46,11 +46,13 @@ public class Panel_Muestra_Datos_Aeropuerto extends javax.swing.JPanel {
                 String ciudad = rs.getString("ciudad");
                 String pais = rs.getString("pais");
                 String num = rs.getString("numero_pistas");
-
-                Panel_Datos_Aerolinea panel = new Panel_Datos_Aerolinea();
-                panel.getLblId().setText(String.valueOf(id));
-                panel.getLblNombre().setText(nom);
-                panel.getLblPais().setText(pais);
+                System.out.println(id);
+                Panel_Datos_Aeropuerto panel = new Panel_Datos_Aeropuerto();
+                panel.getLblid().setText(String.valueOf(id));
+                panel.getLblnombre().setText(nom);
+                panel.getLblciudad().setText(String.valueOf(ciudad));
+                panel.getLblpais().setText(String.valueOf(pais));
+                panel.getLblpsitas().setText(num);
 
                 add(panel);
 
@@ -72,17 +74,6 @@ public class Panel_Muestra_Datos_Aeropuerto extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
     }// </editor-fold>//GEN-END:initComponents
 
 
