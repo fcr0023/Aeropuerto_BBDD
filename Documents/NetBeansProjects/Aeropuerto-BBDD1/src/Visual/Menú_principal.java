@@ -4,8 +4,10 @@
  */
 package Visual;
 
-import Visual.Aerolinea.Frame_Aerolinea;
+import Visual_Billete.Frame_Billete;
+import Visual_Aerolinea.Frame_Aerolinea;
 import Visual_Aeropuerto.Frame_Aeropuerto;
+import Visual_Avion.Frame_Avion;
 
 /**
  *
@@ -139,6 +141,11 @@ public class Menú_principal extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton3.setText("Avión");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -159,6 +166,11 @@ public class Menú_principal extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton4.setText("Billete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -268,6 +280,16 @@ public class Menú_principal extends javax.swing.JFrame {
         Frame_Aeropuerto aeropuerto = new Frame_Aeropuerto();
         aeropuerto.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Frame_Billete billete = new Frame_Billete();
+        billete.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Frame_Avion avion = new Frame_Avion();
+        avion.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

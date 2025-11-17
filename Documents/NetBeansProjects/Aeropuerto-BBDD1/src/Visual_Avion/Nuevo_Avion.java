@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Visual_Aeropuerto;
+package Visual_Avion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author franc
  */
-public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
+public class Nuevo_Avion extends javax.swing.JPanel {
     
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL_CONEXION = "jdbc:mysql://localhost:3306/mydb";
@@ -27,12 +27,12 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
     /**
      * Creates new form Nueva_Aerolinea
      */
-    public Nuevo_Aeropuertoo() {
+    public Nuevo_Avion() {
         initComponents();
     }
      private void AñadirDatosAerolinea() {
             String nombre = txnombre.getText();
-            String pais = txciudad.getText();
+            String pais = txpais.getText();
             if(nombre.isEmpty()||pais.isEmpty()){
                 JOptionPane.showMessageDialog(this,"Porfavo introduce los datos correctamente","Datos en blanco",JOptionPane.ERROR_MESSAGE);
                 return;
@@ -73,23 +73,14 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txciudad = new javax.swing.JTextField();
+        txpais = new javax.swing.JTextField();
         txnombre = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtpais = new javax.swing.JTextField();
-        txtpsitas = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jButton1.setText("CANCELAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel3.add(jButton1, gridBagConstraints);
@@ -108,13 +99,13 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("NUEVO AEROPUERTO");
+        jLabel1.setText("NUEVO AVIÓN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +117,7 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Nombre Aeropuerto");
+        jLabel2.setText("Modelo del Avión");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -135,7 +126,7 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         jPanel2.add(jLabel2, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Ciudad");
+        jLabel3.setText("Capacidad del Avión");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -143,13 +134,13 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        txciudad.setColumns(15);
-        txciudad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txpais.setColumns(15);
+        txpais.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
-        jPanel2.add(txciudad, gridBagConstraints);
+        jPanel2.add(txpais, gridBagConstraints);
 
         txnombre.setColumns(15);
         txnombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -159,50 +150,14 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel2.add(txnombre, gridBagConstraints);
 
-        jLabel4.setText("Pais ");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
-        jPanel2.add(jLabel4, gridBagConstraints);
-
-        jLabel5.setText("Numero de pistas");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
-        jPanel2.add(jLabel5, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
-        jPanel2.add(txtpais, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
-        jPanel2.add(txtpsitas, gridBagConstraints);
-
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     AñadirDatosAerolinea();
     txnombre.setText("");
-    txciudad.setText("");
-    txtpais.setText("");
-    txtpais.setText("");
-    txtpsitas.setText("");
-    
+    txpais.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -211,14 +166,10 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField txciudad;
     private javax.swing.JTextField txnombre;
-    private javax.swing.JTextField txtpais;
-    private javax.swing.JTextField txtpsitas;
+    private javax.swing.JTextField txpais;
     // End of variables declaration//GEN-END:variables
 }

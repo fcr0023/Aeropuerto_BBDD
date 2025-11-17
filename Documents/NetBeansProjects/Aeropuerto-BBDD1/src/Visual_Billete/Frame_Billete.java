@@ -1,4 +1,4 @@
-package Visual_Aeropuerto;
+package Visual_Billete;
 
 import javax.swing.JPanel;
 
@@ -11,17 +11,18 @@ import javax.swing.JPanel;
  *
  * @author franc
  */
-public class Frame_Aeropuerto extends javax.swing.JFrame {
+public class Frame_Billete extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Frame_Aeropuerto.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Frame_Billete.class.getName());
 
     /**
      * Creates new form Aerolinea
      */
-    public Frame_Aeropuerto() {
+    public Frame_Billete() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
+        setExtendedState(MAXIMIZED_BOTH);
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -57,7 +58,7 @@ public class Frame_Aeropuerto extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 255, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("AEROPUERTO");
+        jLabel1.setText("BILLETE");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("DATOS");
@@ -109,6 +110,11 @@ public class Frame_Aeropuerto extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
 
         jButton1.setText("Eliminar datos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -217,12 +223,17 @@ public class Frame_Aeropuerto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        sustituirPanel(new Nuevo_Aeropuertoo());
+        sustituirPanel(new Nuevo_Billete());
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        sustituirPanel(new Panel_Muestra_Datos_Aeropuerto());
+
+        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void sustituirPanel(JPanel p) {
         Panel_Contenido.removeAll();
         Panel_Contenido.add(p);
@@ -251,7 +262,7 @@ public class Frame_Aeropuerto extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Frame_Aeropuerto().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Frame_Billete().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
