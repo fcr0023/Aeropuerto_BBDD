@@ -2,54 +2,54 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Visual_Aerolinea;
+package Visual_Billete;
 
+import Visual_Aerolinea.Panel_Datos_Aerolinea;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
- * @author MEDAC
+ * @author franc
  */
-public class Panel_Muestra_Datos_Aerolinea extends javax.swing.JPanel {
-
+public class Panel_Muestra_Datos_Billete extends javax.swing.JPanel {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL_CONEXION = "jdbc:mysql://localhost:3306/mydb";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "1234";
-
     /**
-     * Creates new form BLanco
+     * Creates new form Panel_Muestra_Datos_Billete
      */
-    public Panel_Muestra_Datos_Aerolinea() {
+    public Panel_Muestra_Datos_Billete() {
         initComponents();
-        mostrarDatosAerolinea();
+        mostrarDatosbillete();
     }
-
-    private void mostrarDatosAerolinea() {
+    private void mostrarDatosbillete() {
         try {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL_CONEXION, USUARIO, PASSWORD);
             Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM aerolinea";
+            String sql = "SELECT * FROM billete";
             ResultSet rs = stmt.executeQuery(sql);
 
 
 
             while (rs.next()) {
 
-                int id = rs.getInt("id_aerolinea");
-                String nom = rs.getString("nombre");
-                String pais = rs.getString("pais_origen");
-                Panel_Datos_Aerolinea panel = new Panel_Datos_Aerolinea();
+                int id = rs.getInt("id_billete");
+                String num = rs.getString("numero_asiento");
+                double precio = rs.getDouble("precio");
+                String dni = rs.getString("pasajero_dni");
+                int idvuelo = rs.getInt("vuelo_id_vuelo");
+                Panel_Datos_Biellete panel = new Panel_Datos_Biellete();
                 panel.getLblId().setText(String.valueOf(id));
-                panel.getLblNombre().setText(nom);
-                panel.getLblPais().setText(pais);
+                panel.getLblNum().setText(String.valueOf(num));
+                panel.getLblPrecio().setText(String.valueOf(precio));
+                panel.getLbldni().setText(dni);
+                panel.getLblidvuelo().setText(String.valueOf(idvuelo));
 
                 add(panel);
 
@@ -63,7 +63,6 @@ public class Panel_Muestra_Datos_Aerolinea extends javax.swing.JPanel {
             System.out.println("Error al conectar con la base de datos: " + e.getMessage());
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +71,8 @@ public class Panel_Muestra_Datos_Aerolinea extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setLayout(new java.awt.GridLayout());
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -201,8 +201,6 @@ public class Frame_Avion extends javax.swing.JFrame {
         jPanel8.add(jPanel15);
 
         jPanel7.add(jPanel8, java.awt.BorderLayout.LINE_START);
-
-        Panel_Contenido.setLayout(new java.awt.GridLayout(1, 0));
         jPanel7.add(Panel_Contenido, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel7, java.awt.BorderLayout.CENTER);
@@ -226,7 +224,7 @@ public class Frame_Avion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+        sustituirPanel(new Panel_Muestra_Datos_Avion());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
