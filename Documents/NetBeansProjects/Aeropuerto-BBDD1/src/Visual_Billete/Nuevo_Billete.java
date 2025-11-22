@@ -30,10 +30,12 @@ public class Nuevo_Billete extends javax.swing.JPanel {
     public Nuevo_Billete() {
         initComponents();
     }
-     private void AñadirDatosAerolinea() {
-            String nombre = txtasiento.getText();
-            String pais = txtprecio.getText();
-            if(nombre.isEmpty()||pais.isEmpty()){
+     private void AñadirDatosBillete() {
+            String asiento = txtasiento.getText();
+            String precio = txtprecio.getText();
+            String pasajero = txtpasajero.getText();
+            String id = txtidvu.getText();
+            if(asiento.isEmpty()||precio.isEmpty()||pasajero.isEmpty()||id.isEmpty()){
                 JOptionPane.showMessageDialog(this,"Porfavo introduce los datos correctamente","Datos en blanco",JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -41,9 +43,11 @@ public class Nuevo_Billete extends javax.swing.JPanel {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL_CONEXION, USUARIO, PASSWORD);
             Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO aerolinea (nombre, pais_origen) VALUES ('"+nombre+"', '"+pais+"')";
+            String sql = "INSERT INTO billete (numero_asiento, precio, pasajero_dni, vuelo_id_vuelo) VALUES ('"+asiento+"', '"+precio+"', '"+pasajero+"', '"+id+"')";
             int filasAfectadas = stmt.executeUpdate(sql);
-        
+            if (filasAfectadas == 0) {
+            JOptionPane.showMessageDialog(this, "El DNI o el ID del vuelo no corresponden a niguno existente en la BBDD", "Datos enviados", JOptionPane.INFORMATION_MESSAGE);      
+            }
             if (filasAfectadas > 0) {
             JOptionPane.showMessageDialog(this, "Se han enviado los datos correctamente", "Datos enviados", JOptionPane.INFORMATION_MESSAGE);  
             }
@@ -78,6 +82,8 @@ public class Nuevo_Billete extends javax.swing.JPanel {
         txtasiento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtpasajero = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtidvu = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -113,7 +119,7 @@ public class Nuevo_Billete extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 913, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +148,7 @@ public class Nuevo_Billete extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        txtprecio.setColumns(15);
+        txtprecio.setColumns(20);
         txtprecio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -150,7 +156,7 @@ public class Nuevo_Billete extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel2.add(txtprecio, gridBagConstraints);
 
-        txtasiento.setColumns(15);
+        txtasiento.setColumns(20);
         txtasiento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -158,7 +164,8 @@ public class Nuevo_Billete extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel2.add(txtasiento, gridBagConstraints);
 
-        jLabel4.setText("Pasajero");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("DNI del Pasajero");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -167,6 +174,7 @@ public class Nuevo_Billete extends javax.swing.JPanel {
         jPanel2.add(jLabel4, gridBagConstraints);
 
         txtpasajero.setColumns(15);
+        txtpasajero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -174,11 +182,28 @@ public class Nuevo_Billete extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel2.add(txtpasajero, gridBagConstraints);
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("Id del Vuelo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
+        jPanel2.add(jLabel5, gridBagConstraints);
+
+        txtidvu.setColumns(20);
+        txtidvu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
+        jPanel2.add(txtidvu, gridBagConstraints);
+
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    AñadirDatosAerolinea();
+    AñadirDatosBillete();
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -196,10 +221,12 @@ public class Nuevo_Billete extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txtasiento;
+    private javax.swing.JTextField txtidvu;
     private javax.swing.JTextField txtpasajero;
     private javax.swing.JTextField txtprecio;
     // End of variables declaration//GEN-END:variables

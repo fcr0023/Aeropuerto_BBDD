@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Visual_Avion;
+package Visual_Pasajero;
 
+import Visual_Billete.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author franc
  */
-public class Nuevo_Avion extends javax.swing.JPanel {
+public class Nuevo_Pasajero extends javax.swing.JPanel {
     
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL_CONEXION = "jdbc:mysql://localhost:3306/mydb";
@@ -27,14 +28,16 @@ public class Nuevo_Avion extends javax.swing.JPanel {
     /**
      * Creates new form Nueva_Aerolinea
      */
-    public Nuevo_Avion() {
+    public Nuevo_Pasajero() {
         initComponents();
     }
-     private void AñadirDatosAvion() {
-            String modelo = txtmodelo.getText();
-            String capacidad = txtcapacidad1.getText();
-            String aero = txtaerolinea.getText();
-            if(modelo.isEmpty()||capacidad.isEmpty()||aero.isEmpty()){
+     private void AñadirDatosPasajero() {
+            String dni = txtdni.getText();
+            String nom = txtnom.getText();
+            String apellido= txtapellido.getText();
+            String telefono= txttelf.getText();
+            
+            if(dni.isEmpty()||nom.isEmpty()||apellido.isEmpty()||telefono.isEmpty()){
                 JOptionPane.showMessageDialog(this,"Porfavo introduce los datos correctamente","Datos en blanco",JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -42,7 +45,7 @@ public class Nuevo_Avion extends javax.swing.JPanel {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL_CONEXION, USUARIO, PASSWORD);
             Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO avion (modelo, capacidad, aerolinea_id_aerolinea) VALUES ('"+modelo+"', '"+capacidad+"''"+aero+"')";
+            String sql = "INSERT INTO pasajero (dni, nombre,apellido,telefono) VALUES ('"+dni+"', '"+nom+"', '"+apellido+"', '"+telefono+"')";
             int filasAfectadas = stmt.executeUpdate(sql);
         
             if (filasAfectadas > 0) {
@@ -55,6 +58,7 @@ public class Nuevo_Avion extends javax.swing.JPanel {
             System.out.println("Error al conectar con la base de datos: " + e.getMessage());
         }
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,17 +78,23 @@ public class Nuevo_Avion extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtmodelo = new javax.swing.JTextField();
-        txtcapacidad1 = new javax.swing.JTextField();
+        txtnom = new javax.swing.JTextField();
+        txtdni = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        txtapellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtaerolinea = new javax.swing.JTextField();
+        txttelf = new javax.swing.JTextField();
 
         setLayout(new java.awt.BorderLayout());
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jButton1.setText("CANCELAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel3.add(jButton1, gridBagConstraints);
@@ -103,13 +113,13 @@ public class Nuevo_Avion extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("NUEVO AVIÓN");
+        jLabel1.setText("NUEVO PASAJERO");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +131,7 @@ public class Nuevo_Avion extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Modelo del Avión");
+        jLabel2.setText("DNI");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -130,7 +140,7 @@ public class Nuevo_Avion extends javax.swing.JPanel {
         jPanel2.add(jLabel2, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Capacidad del Avión");
+        jLabel3.setText("Nombre");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -138,75 +148,80 @@ public class Nuevo_Avion extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
         jPanel2.add(jLabel3, gridBagConstraints);
 
-        txtmodelo.setColumns(20);
-        txtmodelo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtnom.setColumns(20);
+        txtnom.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
+        jPanel2.add(txtnom, gridBagConstraints);
+
+        txtdni.setColumns(20);
+        txtdni.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
-        jPanel2.add(txtmodelo, gridBagConstraints);
-
-        txtcapacidad1.setColumns(20);
-        txtcapacidad1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtcapacidad1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcapacidad1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        jPanel2.add(txtcapacidad1, gridBagConstraints);
+        jPanel2.add(txtdni, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Capacidad del Avión");
+        jLabel4.setText("Apellido");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
         jPanel2.add(jLabel4, gridBagConstraints);
 
+        txtapellido.setColumns(20);
+        txtapellido.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
+        jPanel2.add(txtapellido, gridBagConstraints);
+
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setText("Id Aerolonia");
+        jLabel5.setText("Telefono");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
         jPanel2.add(jLabel5, gridBagConstraints);
 
-        txtaerolinea.setColumns(20);
-        txtaerolinea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtaerolinea.addActionListener(new java.awt.event.ActionListener() {
+        txttelf.setColumns(20);
+        txttelf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txttelf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtaerolineaActionPerformed(evt);
+                txttelfActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
-        jPanel2.add(txtaerolinea, gridBagConstraints);
+        jPanel2.add(txttelf, gridBagConstraints);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    AñadirDatosAvion();
-    txtmodelo.setText("");
-    txtcapacidad1.setText("");
-    txtaerolinea.setText("");
+    AñadirDatosPasajero();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtaerolineaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtaerolineaActionPerformed
-    txtmodelo.setText("");
-    txtcapacidad1.setText("");
-    txtaerolinea.setText("");
-    }//GEN-LAST:event_txtaerolineaActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    txtdni.setText("");
+    txtnom.setText("");
+    txtapellido.setText("");
+    txttelf.setText("");
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtcapacidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcapacidad1ActionPerformed
+    private void txttelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelfActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtcapacidad1ActionPerformed
+    }//GEN-LAST:event_txttelfActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -220,8 +235,9 @@ public class Nuevo_Avion extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField txtaerolinea;
-    private javax.swing.JTextField txtcapacidad1;
-    private javax.swing.JTextField txtmodelo;
+    private javax.swing.JTextField txtapellido;
+    private javax.swing.JTextField txtdni;
+    private javax.swing.JTextField txtnom;
+    private javax.swing.JTextField txttelf;
     // End of variables declaration//GEN-END:variables
 }

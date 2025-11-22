@@ -1,5 +1,6 @@
-package Visual_Billete;
+package Visual_Empleado;
 
+import Visual_Billete.*;
 import javax.swing.JPanel;
 
 /*
@@ -11,14 +12,14 @@ import javax.swing.JPanel;
  *
  * @author franc
  */
-public class Frame_Billete extends javax.swing.JFrame {
+public class Frame_Empleado extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Frame_Billete.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Frame_Empleado.class.getName());
 
     /**
      * Creates new form Aerolinea
      */
-    public Frame_Billete() {
+    public Frame_Empleado() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
@@ -55,7 +56,7 @@ public class Frame_Billete extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 255, 204));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel1.setText("BILLETE");
+        jLabel1.setText("EMPLEADO");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("DATOS");
@@ -181,11 +182,13 @@ public class Frame_Billete extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        sustituirPanel(new Nuevo_Billete());
+        sustituirPanel(new Nuevo_Empleadoo());
+        setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        sustituirPanel(new Panel_Muestra_Datos_Billete());
+        sustituirPanel(new Panel_Muestra_Datos_Empleado());
         
     }//GEN-LAST:event_jButton3ActionPerformed
     private void sustituirPanel(JPanel p) {
@@ -216,7 +219,7 @@ public class Frame_Billete extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Frame_Billete().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Frame_Empleado().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

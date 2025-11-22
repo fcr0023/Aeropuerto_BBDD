@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Visual_Billete;
+package Visual_Empleado;
 
-import Visual_Aerolinea.Panel_Datos_Aerolinea;
+import Visual_Avion.Panel_Datos_Avion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,44 +13,42 @@ import java.sql.Statement;
 
 /**
  *
- * @author franc
+ * @author MEDAC
  */
-public class Panel_Muestra_Datos_Billete extends javax.swing.JPanel {
+public class Panel_Muestra_Datos_Empleado extends javax.swing.JPanel {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static final String URL_CONEXION = "jdbc:mysql://localhost:3306/mydb";
     private static final String USUARIO = "root";
     private static final String PASSWORD = "1234";
     /**
-     * Creates new form Panel_Muestra_Datos_Billete
+     * Creates new form Panel_Muestra_Datos_Empleado
      */
-    public Panel_Muestra_Datos_Billete() {
+    public Panel_Muestra_Datos_Empleado() {
         initComponents();
-        mostrarDatosbillete();
+        mostrarDatosEmpleado();
     }
-    private void mostrarDatosbillete() {
+private void mostrarDatosEmpleado() {
         try {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL_CONEXION, USUARIO, PASSWORD);
             Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM billete";
+            String sql = "SELECT * FROM empleado";
             ResultSet rs = stmt.executeQuery(sql);
 
 
 
             while (rs.next()) {
 
-                int id = rs.getInt("id_billete");
-                String num = rs.getString("numero_asiento");
-                double precio = rs.getDouble("precio");
-                String dni = rs.getString("pasajero_dni");
-                int idvuelo = rs.getInt("vuelo_id_vuelo");
-                Panel_Datos_Biellete panel = new Panel_Datos_Biellete();
-                panel.getLblId().setText(String.valueOf(id));
-                panel.getLblNum().setText(String.valueOf(num));
-                panel.getLblPrecio().setText(String.valueOf(precio));
-                panel.getLbldni().setText(dni);
-                panel.getLblidvuelo().setText(String.valueOf(idvuelo));
-
+                int id = rs.getInt("id_empleado");
+                String nombre = rs.getString("nombre");
+                String apellido = rs.getString("apellido");
+                String contrato = rs.getString("hora_contrato");
+                Panel_Datos_Empleado panel = new Panel_Datos_Empleado();
+                panel.getLblid().setText(String.valueOf(id));
+                panel.getLblnom().setText(nombre);
+                panel.getLblapellido().setText(apellido);
+                panel.getLblfecha().setText(contrato);
+                
                 add(panel);
 
             }

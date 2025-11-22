@@ -30,10 +30,12 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
     public Nuevo_Aeropuertoo() {
         initComponents();
     }
-     private void AñadirDatosAerolinea() {
+     private void AñadirDatosAeropuerto() {
             String nombre = txnombre.getText();
-            String pais = txciudad.getText();
-            if(nombre.isEmpty()||pais.isEmpty()){
+            String ciudad = txciudad.getText();
+            String pais = txtpais.getText();
+            String pistas = txtpsitas.getText();
+            if(nombre.isEmpty()||pais.isEmpty()||ciudad.isEmpty()||pistas.isEmpty()){
                 JOptionPane.showMessageDialog(this,"Porfavo introduce los datos correctamente","Datos en blanco",JOptionPane.ERROR_MESSAGE);
                 return;
             }
@@ -41,7 +43,7 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
             Class.forName(DRIVER);
             Connection conn = DriverManager.getConnection(URL_CONEXION, USUARIO, PASSWORD);
             Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO aerolinea (nombre, pais_origen) VALUES ('"+nombre+"', '"+pais+"')";
+            String sql = "INSERT INTO aeropuerto (nombre, ciudad, pais, numero_pistas) VALUES ('"+nombre+"', '"+ciudad+"', '"+pais+"', '"+pistas+"')";
             int filasAfectadas = stmt.executeUpdate(sql);
         
             if (filasAfectadas > 0) {
@@ -159,6 +161,7 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel2.add(txnombre, gridBagConstraints);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Pais ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -167,6 +170,7 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
         jPanel2.add(jLabel4, gridBagConstraints);
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Numero de pistas");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -174,12 +178,16 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
         gridBagConstraints.insets = new java.awt.Insets(30, 5, 30, 30);
         jPanel2.add(jLabel5, gridBagConstraints);
+
+        txtpais.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(30, 30, 30, 30);
         jPanel2.add(txtpais, gridBagConstraints);
+
+        txtpsitas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -191,7 +199,7 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    AñadirDatosAerolinea();
+    AñadirDatosAeropuerto();
     txnombre.setText("");
     txciudad.setText("");
     txtpais.setText("");
@@ -201,7 +209,7 @@ public class Nuevo_Aeropuertoo extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
